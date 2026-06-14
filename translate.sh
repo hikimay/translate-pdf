@@ -10,6 +10,7 @@ OUTPUT_DIR=""
 ENGINE="google"
 LANG_IN="en"
 LANG_OUT="ja"
+MODEL=""
 
 # ── 引数パース ────────────────────────────────
 while [[ $# -gt 0 ]]; do
@@ -19,6 +20,7 @@ while [[ $# -gt 0 ]]; do
     --engine)   ENGINE="$2";     shift 2 ;;
     --lang-in)  LANG_IN="$2";   shift 2 ;;
     --lang-out) LANG_OUT="$2";  shift 2 ;;
+    --model)    MODEL="$2";      shift 2 ;;
     *) echo "Unknown option: $1" >&2; exit 1 ;;
   esac
 done
@@ -64,12 +66,18 @@ echo "翻訳を開始します..."
 echo "  入力: $INPUT"
 echo "  出力: $OUTPUT_DIR"
 echo "  エンジン: $ENGINE"
+if [[ -n "$MODEL" ]]; then
+  echo "  モデル: $MODEL"
+fi
 echo "  言語: $LANG_IN → $LANG_OUT"
 echo ""
 
 CMD="$PDF2ZH \"$INPUT\" --lang-in $LANG_IN --lang-out $LANG_OUT -o \"$OUTPUT_DIR\""
 if [[ "$ENGINE" != "google" ]]; then
   CMD="$CMD -s $ENGINE"
+fi
+if [[ -n "$MODEL" ]]; then
+  CMD="$CMD --model $MODEL"
 fi
 
 eval "$CMD"

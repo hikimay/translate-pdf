@@ -16,6 +16,8 @@
   - `google`：APIキー不要
   - `claude`：環境変数 `ANTHROPIC_API_KEY` が必要
   - `openai`：環境変数 `OPENAI_API_KEY` が必要
+- `MODEL`：使用するモデル名（省略時はエンジンのデフォルト）
+  - 例：`claude-sonnet-4-6`、`gpt-4o` など
 - `LANG_IN`：入力言語（省略時は `en`）
 - `LANG_OUT`：出力言語（省略時は `ja`）
 
@@ -26,6 +28,7 @@ bash ~/.claude/skills/translate-pdf/translate.sh \
   --input <INPUT> \
   --output <OUTPUT_DIR> \
   --engine <ENGINE> \
+  --model <MODEL> \
   --lang-in <LANG_IN> \
   --lang-out <LANG_OUT>
 ```
@@ -53,6 +56,9 @@ bash ~/.claude/skills/translate-pdf/translate.sh \
 
 output/ フォルダに claude で翻訳して
 → bash translate.sh --input 論文.pdf --output output/ --engine claude
+
+claude-sonnet-4-6 モデルを指定して翻訳して
+→ bash translate.sh --input 論文.pdf --engine claude --model claude-sonnet-4-6
 
 英語以外の論文（フランス語→日本語）
 → bash translate.sh --input 論文.pdf --lang-in fr --lang-out ja
