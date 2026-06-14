@@ -1,6 +1,6 @@
 # translate-pdf
 
-PDF 論文を日本語に翻訳する Claude Code スキルです。[pdf2zh](https://github.com/Byaidu/PDFMathTranslate) を使ってレイアウトを保ったまま翻訳します。
+PDF 論文を日本語に翻訳する Claude Code スキルです．[pdf2zh](https://github.com/Byaidu/PDFMathTranslate) を使ってレイアウトを保ったまま翻訳します．
 
 ## セットアップ
 
@@ -27,12 +27,12 @@ export OPENAI_API_KEY='sk-...'
 
 ### Claude Code スキルとして使う
 
-Claude Code 上で以下のように依頼するだけで翻訳が実行されます：
+Claude Code 上で，例えば以下のように依頼すると翻訳が実行されます：
 
-```
-論文.pdf を日本語に翻訳して
-output/ フォルダに claude で翻訳して
-claude-sonnet-4-6 モデルを指定して翻訳して
+```markdown
+- sample_paper.pdf を日本語に翻訳して
+- openai の gpt-4o-mini モデルで翻訳し，output/ フォルダに出力して
+- claude-sonnet-4-6 モデルを使用して翻訳して
 ```
 
 ### スクリプトを直接実行する
@@ -70,13 +70,13 @@ bash translate.sh --input paper.pdf --engine claude --model claude-sonnet-4-6
 # 出力先を指定して OpenAI で翻訳
 bash translate.sh --input paper.pdf --output ./output --engine openai --model gpt-4o
 
-# フランス語→日本語
+# フランス語 -> 日本語
 bash translate.sh --input paper.pdf --lang-in fr --lang-out ja
 ```
 
 ## 出力ファイル
 
-翻訳が完了すると OUTPUT_DIR に以下の2ファイルが生成されます：
+翻訳が完了すると `OUTPUT_DIR` に以下の 2 ファイルが生成されます：
 
 - `<ファイル名>-mono.pdf`：翻訳後のみ
-- `<ファイル名>-dual.pdf`：原文と翻訳の見開き（推奨）
+- `<ファイル名>-dual.pdf`：原文と翻訳の見開き
