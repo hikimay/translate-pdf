@@ -2,7 +2,19 @@
 
 PDF 論文を日本語に翻訳する Claude Code スキルです．[pdf2zh](https://github.com/Byaidu/PDFMathTranslate) を使ってレイアウトを保ったまま翻訳します．
 
+## 動作環境
+
+- `Python >= 3.11`
+- Claude Code（ver. 2.1.177 以降で動作確認済み）
+
 ## セットアップ
+
+### uv のインストール
+
+```bash
+curl -LsSf https://astral.sh/uv/install.sh | sh
+source $HOME/.cargo/env
+```
 
 ### pdf2zh のインストール
 
@@ -47,6 +59,16 @@ bash translate.sh \
   [--lang-out <LANG_OUT>]
 ```
 
+## 翻訳エンジンとモデル
+
+| エンジン | `--engine` | 必要な環境変数 | モデル指定例 |
+|---|---|---|---|
+| Google 翻訳 | `google` | なし（不要） | — |
+| Anthropic Claude | `claude` | `ANTHROPIC_API_KEY` | `claude-sonnet-4-6`、`claude-opus-4-8`、`claude-haiku-4-5` |
+| OpenAI | `openai` | `OPENAI_API_KEY` | `gpt-4o`、`gpt-4o-mini` |
+
+`--model` を省略した場合は pdf2zh のエンジンごとのデフォルトモデルが使われます。Google 翻訳はモデル指定不要です。
+
 ## オプション
 
 | オプション | デフォルト | 説明 |
@@ -80,3 +102,7 @@ bash translate.sh --input paper.pdf --lang-in fr --lang-out ja
 
 - `<ファイル名>-mono.pdf`：翻訳後のみ
 - `<ファイル名>-dual.pdf`：原文と翻訳の見開き
+
+## ライセンス
+
+[MIT License](LICENSE)
