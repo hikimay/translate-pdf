@@ -5,7 +5,7 @@ PDF 論文を日本語に翻訳する Claude Code スキルです．[pdf2zh](htt
 ## 動作環境
 
 - `Python >= 3.11`
-- Claude Code（ver. 2.1.177 以降で動作確認済み）
+- Claude Code（version >= 2.1.177）
 
 ## セットアップ
 
@@ -42,9 +42,15 @@ export OPENAI_API_KEY='sk-...'
 Claude Code 上で，例えば以下のように依頼すると翻訳が実行されます：
 
 ```markdown
-- sample_paper.pdf を日本語に翻訳して
-- openai の gpt-4o-mini モデルで翻訳し，output/ フォルダに出力して
-- claude-sonnet-4-6 モデルを使用して翻訳して
+sample_paper.pdf を日本語に翻訳して
+```
+
+```markdown
+openai の gpt-4o-mini モデルで翻訳し，output/ フォルダに出力して
+```
+
+```markdown
+claude-sonnet-4-6 モデルを使用して翻訳して
 ```
 
 ### スクリプトを直接実行する
@@ -64,8 +70,8 @@ bash translate.sh \
 | エンジン | `--engine` | 必要な環境変数 | モデル指定例 |
 |---|---|---|---|
 | Google 翻訳 | `google` | なし（不要） | — |
-| Anthropic Claude | `claude` | `ANTHROPIC_API_KEY` | `claude-sonnet-4-6`、`claude-opus-4-8`、`claude-haiku-4-5` |
-| OpenAI | `openai` | `OPENAI_API_KEY` | `gpt-4o`、`gpt-4o-mini` |
+| Anthropic Claude | `claude` | `ANTHROPIC_API_KEY` | `claude-sonnet-4-6`, `claude-opus-4-8`, `claude-haiku-4-5` |
+| OpenAI | `openai` | `OPENAI_API_KEY` | `gpt-4o`, `gpt-4o-mini` |
 
 `--model` を省略した場合は pdf2zh のエンジンごとのデフォルトモデルが使われます。Google 翻訳はモデル指定不要です。
 
